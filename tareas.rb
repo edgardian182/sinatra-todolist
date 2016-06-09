@@ -32,6 +32,12 @@ get '/:id/edit' do
   erb :edit
 end
 
+post '/:id/edit' do
+  Tarea.destroy(params[:id])
+  Tarea.create(params[:title])
+  redirect '/'
+end
+
 
 
 get '/contacto' do

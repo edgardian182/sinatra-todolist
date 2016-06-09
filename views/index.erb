@@ -7,7 +7,9 @@
      <% @tareas.each do |tarea| %>
       <% if !tarea["done"] %>
         <tr>
-          <td class="texto-visible"><%= tarea["title"].capitalize %></td>
+          <td class="texto-visible">
+            <a class="tarea" href="/<%= tarea["id"] %>/edit" ><%= tarea["title"].capitalize %></a>
+          </td>
           <td class="text-right">
             <a class="btn <%= tarea["done"] ? "btn-info" : "btn-success" %>" href="/<%= tarea["id"] %>"> <%= tarea["done"] ? "READY" : "HECHA" %></a>
             <a id="del" class="del btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>
@@ -28,8 +30,10 @@
    <table class="table table-hover table-responsive">
      <% @tareas.each do |tarea| %>
       <% if tarea["done"] %>
-        <tr class="text-muted">
-          <td class="texto-visible"><%= tarea["title"].capitalize %></td>
+        <tr>
+          <td class="texto-visible">
+            <a class="tarea2" href="/<%= tarea["id"] %>/edit"><%= tarea["title"].capitalize %></a>
+          </td>
           <td class="text-right">
             <a class="btn <%= tarea["done"] ? "btn-info" : "btn-success" %>" href="/<%= tarea["id"] %>"> <%= tarea["done"] ? "READY" : "HECHA" %></a>
             <a id="del" class="del btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>

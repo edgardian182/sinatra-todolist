@@ -1,3 +1,17 @@
 .texto-visible {
   font-size: 18px;
 }
+
+.table a.tarea {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding-right: 400px;
+}
+
+.table a.tarea2 {
+  text-decoration: none;
+  color: #a9a9a9;
+  display: block;
+  padding-right: 400px;
+}
