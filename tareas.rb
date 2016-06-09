@@ -27,6 +27,11 @@ get '/:id/delete' do
   redirect '/'
 end
 
+get '/:id/edit' do
+  @tarea = Tarea.find(params[:id])
+  erb :edit
+end
+
 
 
 get '/contacto' do

@@ -10,7 +10,7 @@
           <td class="texto-visible"><%= tarea["title"].capitalize %></td>
           <td class="text-right">
             <a class="btn <%= tarea["done"] ? "btn-info" : "btn-success" %>" href="/<%= tarea["id"] %>"> <%= tarea["done"] ? "READY" : "HECHA" %></a>
-            <a id="del" class="btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>
+            <a id="del" class="del btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>
           </td>
         </tr>
       <% end %>
@@ -32,7 +32,7 @@
           <td class="texto-visible"><%= tarea["title"].capitalize %></td>
           <td class="text-right">
             <a class="btn <%= tarea["done"] ? "btn-info" : "btn-success" %>" href="/<%= tarea["id"] %>"> <%= tarea["done"] ? "READY" : "HECHA" %></a>
-            <a id="del" class="btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>
+            <a id="del" class="del btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>
           </td>
         </tr>
       <% end %>
@@ -44,10 +44,14 @@
 <script>
   function seguro() {
     var r = confirm("Estas seguro?");
+    var link = document.getElementsByClassName('del');
+    var i;
     if (r == true) {
 
     } else {
-      document.getElementById('del').href = '/'
+      for (i=0; i < link.length; i++) {
+        link[i].href = '/'
+      }
     }
   }
 </script>
