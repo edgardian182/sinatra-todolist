@@ -1,0 +1,53 @@
+<h1 class="text-center">LISTA DE TAREAS</h1>
+<br><br>
+<div class="row">
+ <div class="col-sm-12">
+  <h2>Sin terminar</h2>
+   <table class="table table-hover table-responsive">
+     <% @tareas.each do |tarea| %>
+      <% if !tarea["done"] %>
+        <tr>
+          <td class="texto-visible"><%= tarea["title"].capitalize %></td>
+          <td class="text-right">
+            <a class="btn <%= tarea["done"] ? "btn-info" : "btn-success" %>" href="/<%= tarea["id"] %>"> <%= tarea["done"] ? "READY" : "HECHA" %></a>
+            <a id="del" class="btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>
+          </td>
+        </tr>
+      <% end %>
+     <% end %>
+   </table>
+   <% if @tareas.empty? %>
+     <p class="texto-visible">No has creado ninguna tarea</p>
+   <% end %>
+ </div>
+</div>
+
+<div class="row">
+ <div class="col-sm-12">
+  <h2>Terminadas</h2>
+   <table class="table table-hover table-responsive">
+     <% @tareas.each do |tarea| %>
+      <% if tarea["done"] %>
+        <tr class="text-muted">
+          <td class="texto-visible"><%= tarea["title"].capitalize %></td>
+          <td class="text-right">
+            <a class="btn <%= tarea["done"] ? "btn-info" : "btn-success" %>" href="/<%= tarea["id"] %>"> <%= tarea["done"] ? "READY" : "HECHA" %></a>
+            <a id="del" class="btn btn-danger" href="/<%= tarea["id"] %>/delete" onclick="seguro()">DELETE</a>
+          </td>
+        </tr>
+      <% end %>
+     <% end %>
+   </table>
+ </div>
+</div>
+
+<script>
+  function seguro() {
+    var r = confirm("Estas seguro?");
+    if (r == true) {
+
+    } else {
+      document.getElementById('del').href = '/'
+    }
+  }
+</script>
